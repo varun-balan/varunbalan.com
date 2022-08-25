@@ -1,8 +1,8 @@
-import './App.css';
+import './MainPage.css';
 
-function App() {
+function MainPage() {
   return (
-    <div className="App">
+    <div className="MainPage">
       {/* Define routes */}
       {/* https://medium.com/@abventures/how-to-build-a-react-website-in-aws-within-15-minutes-9e9c37f85aeb */}
       <h1>Hello! Welcome to my website. I'm currently developing it :)</h1>
@@ -11,4 +11,4 @@ function App() {
   );
 }
 
-export default App;
+export default MainPage;
