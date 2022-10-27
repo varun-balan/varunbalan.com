@@ -1,0 +1,82 @@
+/* Below animation is directly copied from */
+/* https://jarv.is/notes/css-waving-hand-emoji/ */
+.wave {
+    animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;        /* Change to speed up or slow down */
+    animation-iteration-count: infinite;  /* Never stop waving :) */
+    transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+    display: inline-block;
+    margin: auto;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+    100% { transform: rotate( 0.0deg) }
+  }
+
+
+#MainDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.Bio {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+button {
+  width: 10%;
+  margin: 1%;
+  height: 3em;
+  
+}
+
+a {
+  width: 10%;
+  margin: 1%;
+  height: 2.5em;
+  text-align: center;
+
+  display: block;
+  width: 115px;
+  height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+#LinkButtonsDiv {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.GitHubButton {
+  background-color: black;
+  color: white;
+}
+
+.LinkedInButton {
+  background-color: #0077b5;
+  color: white;
+}
+
+.ResumeAnchor {
+  background-color: green;
+  color: white;
+  font-style: normal;
+}
+
