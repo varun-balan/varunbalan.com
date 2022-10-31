@@ -1,7 +1,6 @@
 import React from "react";
 import "./Details.css";
-import resume from '../images/varun-resume.pdf';
-
+import resume from "../images/varun-resume.pdf";
 
 function Details() {
   return (
@@ -14,27 +13,25 @@ function Details() {
       <br />
 
       <div id="LinkButtonsDiv">
-        <button
-          className="GitHubButton"
-          onClick={(e) => {
-            e.preventDefault();
-            window.open("https://github.com/varun-balan/", "_blank");
-          }}
+        <a
+          className="GitHubAnchor"
+          href="https://github.com/varun-balan/"
+          target="_blank"
+          rel="noreferrer"
         >
           GitHub
-        </button>
-
-        <button
-          className="LinkedInButton"
-          onClick={(e) => {
-            e.preventDefault();
-            window.open("https://www.linkedin.com/in/varunbalan/", "_blank");
-          }}
+        </a>
+        <a
+          className="LinkedInAnchor"
+          href="https://www.linkedin.com/in/varunbalan/"
+          target="_blank"
+          rel="noreferrer"
         >
           LinkedIn
-        </button>
-
-        <a className="ResumeAnchor" href={resume} download="varun-resume.pdf">Resume</a>
+        </a>
+        <a className="ResumeAnchor" href={resume} download="varun-resume.pdf">
+          Resume
+        </a>
       </div>
     </div>
   );

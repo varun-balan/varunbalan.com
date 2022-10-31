@@ -64,18 +64,21 @@ a {
   justify-content: center;
 }
 
-.GitHubButton {
-  background-color: black;
-  color: white;
-}
-
-.LinkedInButton {
-  background-color: #0077b5;
-  color: white;
-}
 
 .ResumeAnchor {
   background-color: green;
+  color: white;
+  font-style: normal;
+}
+
+.GitHubAnchor {
+  background-color: black;
+  color: white;
+  font-style: normal;
+}
+
+.LinkedInAnchor {
+  background-color: #0077b5;
   color: white;
   font-style: normal;
 }
