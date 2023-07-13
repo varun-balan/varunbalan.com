@@ -1,16 +1,16 @@
 import React from "react";
 import "./Details.css";
-import resume from "../images/varun-resume.pdf";
 
 function Details() {
   return (
     <div id="MainDetails">
-      <h1 className="Bio">
-        {" "}
-        Hello <span className="wave">👋 </span>{" "}
-      </h1>
+      <div id="LeftHalfLanding">
+        <h1 className="Bio">
+          Hello <span className="wave">👋 </span>
+        </h1>
+      </div>
 
-      <br />
+      <div class="verticalLine"></div>
 
       <div id="LinkButtonsDiv">
         <a
@@ -29,7 +29,12 @@ function Details() {
         >
           LinkedIn
         </a>
-        <a className="ResumeAnchor" href={resume} download="varun-resume.pdf">
+        <a
+          className="ResumeAnchor"
+          href="https://varun-balan-resume-personal-website.s3.amazonaws.com/Varun-Balan-Resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
           Resume
         </a>
       </div>

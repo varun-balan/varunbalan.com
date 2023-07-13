@@ -23,7 +23,7 @@
 
 #MainDetails {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     text-align: center;
 }
@@ -44,26 +44,35 @@ a {
   margin: 1%;
   height: 2.5em;
   text-align: center;
+  margin: 5%;
+
 
   display: block;
   width: 115px;
   height: 25px;
-    background: #4E9CAF;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    line-height: 25px;
+  background: #4E9CAF;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
 }
 
 #LinkButtonsDiv {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   text-align: center;
   justify-content: center;
+  margin: 5%;
 }
 
+#LeftHalfLanding {
+  margin: 5%;
+  justify-content: left;
+  text-align: center;
+}
 
 .ResumeAnchor {
   background-color: green;
@@ -83,3 +92,7 @@ a {
   font-style: normal;
 }
 
+.verticalLine {
+  border-left: 2px solid skyblue;
+  height: 20em;
+}
