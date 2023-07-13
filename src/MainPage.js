@@ -8,7 +8,7 @@ function MainPage() {
     <div className="MainPage">
       {/* Define routes */}
 
-      <React.Fragment>
+      {/* <React.Fragment>
         <br />
         <h1 style={{ textAlign: "center" }}>
           Hello! Welcome to my website. I'm currently developing it :)
@@ -17,7 +17,7 @@ function MainPage() {
           I estimate to have it mostly up by mid December 2022
         </h2>
         <br />
-      </React.Fragment>
+      </React.Fragment> */}
 
       <Header />
 
