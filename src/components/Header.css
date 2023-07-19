@@ -12,20 +12,9 @@
     padding: 0.5em;
 }
 
-#PersonalPhoto {
-    width: 4em;
-    height: 4em;
-    border-radius: 50%;
-    margin-top: 0.5em;
-    margin-left: 0.5em;
-}
-
-
 #MidNameDisplay {
     margin: auto;
     color: white;
-    /* padding-left: 7em; */
-    padding-right: 3em;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

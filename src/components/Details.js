@@ -1,5 +1,6 @@
 import React from "react";
 import "./Details.css";
+import selfImage from "../images/selfPhoto1.jpg";
 
 function Details() {
   return (
@@ -8,9 +9,10 @@ function Details() {
         <h1 className="Bio">
           Hello <span className="wave">👋 </span>
         </h1>
+        <img src={selfImage} alt="Varun-Self" id="PersonalPhoto"/>
       </div>
 
-      <div class="verticalLine"></div>
+      {/* <div class="verticalLine"></div> */}
 
       <div id="LinkButtonsDiv">
         <a

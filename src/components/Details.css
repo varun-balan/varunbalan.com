@@ -32,6 +32,13 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#PersonalPhoto {
+  width: 13em;
+  height: 12em;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+}
+
 button {
   width: 10%;
   margin: 1%;
