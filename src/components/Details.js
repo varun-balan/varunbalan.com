@@ -35,7 +35,6 @@ function Details() {
           className="ResumeAnchor"
           href="https://varun-balan-resume-personal-website.s3.amazonaws.com/Varun-Balan-Resume.pdf"
           target="_blank"
-          rel="noreferrer"
         >
           Resume
         </a>
