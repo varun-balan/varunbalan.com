@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# varunbalan.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My personal website — live at **[varunbalan.com](https://varunbalan.com)**.
 
-## Available Scripts
+Built with [React](https://react.dev/) (bootstrapped with [Create React App](https://github.com/facebook/create-react-app)) and hosted on **AWS Amplify**, which auto-deploys on every push to the `main` branch.
 
-In the project directory, you can run:
+## Tech stack
 
-### `npm start`
+- **React 18** + **react-router-dom** — UI
+- **Create React App** (`react-scripts`) — build tooling
+- **AWS Amplify Hosting** — build, deploy, CDN, and custom domain
+- **Amazon S3** — hosts the resume PDF linked from the homepage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Local development
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install      # first time only
+npm start        # starts the dev server at http://localhost:3000
+```
 
-### `npm test`
+The page hot-reloads as you edit. Lint warnings show in the terminal and browser console.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Previewing desktop vs. mobile
 
-### `npm run build`
+There's nothing extra to install — use your browser's built-in device tools:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Chrome / Edge:** open DevTools (`Cmd+Option+I`), then toggle the device toolbar (`Cmd+Shift+M`). Pick a device preset or drag to resize; the pixel width shows as you go.
+- **Quick check:** just drag the browser window narrow/wide.
+- **On a real phone:** with `npm start` running, visit `http://<your-computer-LAN-IP>:3000` from a phone on the same Wi-Fi (find the IP with `ipconfig getifaddr en0`).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Other scripts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Command | What it does |
+|---|---|
+| `npm start` | Run the dev server (`http://localhost:3000`) |
+| `npm run build` | Produce an optimized production build in `build/` |
+| `npm test` | Run the test runner in watch mode |
 
-### `npm run eject`
+You normally never run `npm run build` by hand — Amplify does it on deploy (see below).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment (AWS Amplify)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This site uses **continuous deployment**: there is no manual deploy step. The flow is:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. You commit and push to `main`:
+   ```bash
+   git push origin main
+   ```
+2. The GitHub repo (`varun-balan/varunbalan.com`) is connected to an AWS Amplify app. Amplify is notified of the push via a webhook.
+3. Amplify spins up a build, runs the build steps (install deps → `npm run build`), and publishes the contents of the `build/` folder to its CDN.
+4. Once the build succeeds, the new version is live at **varunbalan.com** — usually within a couple of minutes.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can watch build progress and see logs in the **AWS Amplify Console** for this app.
 
-## Learn More
+### Build settings
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Amplify uses the standard Create React App build settings (configured in the Amplify Console, not committed to this repo). The equivalent build spec is:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```yaml
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+```
 
-### Code Splitting
+> To pin these settings in the repo instead of the console, save the block above as `amplify.yml` at the project root — Amplify will use that file on the next build.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Custom domain
 
-### Analyzing the Bundle Size
+`varunbalan.com` is connected to the Amplify app under **Domain management** in the Amplify Console, which provisions the TLS certificate and DNS records. No DNS changes are needed for normal deploys.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Rolling back
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If a deploy goes wrong, the Amplify Console keeps previous builds — you can redeploy an earlier successful build, or revert the offending commit on `main` and push (which triggers a fresh deploy).

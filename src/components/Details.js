@@ -1,6 +1,6 @@
 import React from "react";
 import "./Details.css";
-import selfImage from "../images/selfPhoto1.jpg";
+import selfImage from "../images/selfPhoto3.jpg";
 
 function Details() {
   return (
@@ -35,6 +35,7 @@ function Details() {
           className="ResumeAnchor"
           href="https://varun-balan-resume-personal-website.s3.amazonaws.com/Varun-Balan-Resume.pdf"
           target="_blank"
+          rel="noreferrer"
         >
           Resume
         </a>
