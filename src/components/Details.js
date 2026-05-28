@@ -1,15 +1,12 @@
 import React from "react";
 import "./Details.css";
-import selfImage from "../images/selfPhoto1.jpg";
+import selfImage from "../images/selfPhoto3.jpg";
 
 function Details() {
   return (
     <div id="MainDetails">
       <div id="LeftHalfLanding">
-        <h1 className="Bio">
-          Hello <span className="wave">👋 </span>
-        </h1>
-        <img src={selfImage} alt="Varun-Self" id="PersonalPhoto"/>
+        <img src={selfImage} alt="Varun Balan" id="PersonalPhoto"/>
       </div>
 
       {/* <div class="verticalLine"></div> */}
@@ -35,6 +32,7 @@ function Details() {
           className="ResumeAnchor"
           href="https://varun-balan-resume-personal-website.s3.amazonaws.com/Varun-Balan-Resume.pdf"
           target="_blank"
+          rel="noreferrer"
         >
           Resume
         </a>
