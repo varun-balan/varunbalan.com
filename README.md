@@ -38,49 +38,6 @@ There's nothing extra to install — use your browser's built-in device tools:
 
 You normally never run `npm run build` by hand — Amplify does it on deploy (see below).
 
-## Deployment (AWS Amplify)
+## Deployment
 
-This site uses **continuous deployment**: there is no manual deploy step. The flow is:
-
-1. You commit and push to `main`:
-   ```bash
-   git push origin main
-   ```
-2. The GitHub repo (`varun-balan/varunbalan.com`) is connected to an AWS Amplify app. Amplify is notified of the push via a webhook.
-3. Amplify spins up a build, runs the build steps (install deps → `npm run build`), and publishes the contents of the `build/` folder to its CDN.
-4. Once the build succeeds, the new version is live at **varunbalan.com** — usually within a couple of minutes.
-
-You can watch build progress and see logs in the **AWS Amplify Console** for this app.
-
-### Build settings
-
-Amplify uses the standard Create React App build settings (configured in the Amplify Console, not committed to this repo). The equivalent build spec is:
-
-```yaml
-version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: build
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
-```
-
-> To pin these settings in the repo instead of the console, save the block above as `amplify.yml` at the project root — Amplify will use that file on the next build.
-
-### Custom domain
-
-`varunbalan.com` is connected to the Amplify app under **Domain management** in the Amplify Console, which provisions the TLS certificate and DNS records. No DNS changes are needed for normal deploys.
-
-### Rolling back
-
-If a deploy goes wrong, the Amplify Console keeps previous builds — you can redeploy an earlier successful build, or revert the offending commit on `main` and push (which triggers a fresh deploy).
+Hosted on **AWS Amplify** with continuous deployment — every push to the `main` branch automatically builds and deploys the site to [varunbalan.com](https://varunbalan.com).
