@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Details.css";
 import selfImage from "../images/selfPhoto3.jpg";
 
@@ -29,9 +28,6 @@ function Details() {
         >
           LinkedIn
         </a>
-        <Link className="ResumeAnchor" to="/resume">
-          Resume
-        </Link>
       </div>
     </div>
   );

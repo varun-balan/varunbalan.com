@@ -106,7 +106,7 @@ const resume = {
       school: "Georgetown University",
       location: "Washington, DC",
       date: "Expected May 2029",
-      degree: "Master of Business Administration (MBA), Part-Time",
+      degree: "Part-time MBA",
     },
     {
       school: "University of Wisconsin–Madison",

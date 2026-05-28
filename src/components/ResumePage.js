@@ -1,23 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "./Header";
 import resume from "../data/resume";
 import "./ResumePage.css";
 
-// Renders one role-style entry (used by Experience, Research, Leadership).
+// One role-style entry (Experience, Research, Leadership).
 function Entry({ item }) {
   return (
-    <div className="resume-entry">
-      <div className="resume-entry-head">
-        <span className="resume-entry-title">
-          {item.company} — {item.role}
-        </span>
-        <span className="resume-entry-date">{item.date}</span>
+    <div className="entry">
+      <div className="entry-head">
+        <div className="entry-titles">
+          <span className="entry-company">{item.company}</span>
+          <span className="entry-role">
+            {item.role}
+            {item.location ? ` · ${item.location}` : ""}
+          </span>
+        </div>
+        <span className="badge">{item.date}</span>
       </div>
-      {item.location && <div className="resume-entry-meta">{item.location}</div>}
-      {item.summary && <p className="resume-entry-summary">{item.summary}</p>}
+      {item.summary && <p className="entry-summary">{item.summary}</p>}
       {item.bullets && (
-        <ul>
+        <ul className="bullets">
           {item.bullets.map((b, i) => (
             <li key={i}>{b}</li>
           ))}
@@ -27,15 +29,24 @@ function Entry({ item }) {
   );
 }
 
+function Section({ title, children }) {
+  return (
+    <section className="section">
+      <h2 className="section-title">{title}</h2>
+      {children}
+    </section>
+  );
+}
+
 function ResumePage() {
   return (
     <div className="ResumePage">
       <Header />
 
-      <main className="resume-container">
-        <header className="resume-top">
+      <main className="resume">
+        <header className="resume-hero">
           <h1>{resume.name}</h1>
-          <p className="resume-subline">
+          <p className="hero-meta">
             {resume.location}
             {" · "}
             <a href={resume.links.linkedin} target="_blank" rel="noreferrer">
@@ -46,60 +57,55 @@ function ResumePage() {
               GitHub
             </a>
           </p>
-          <p className="resume-updated">Last updated: {resume.lastUpdated}</p>
-          <div className="resume-actions">
+          <div className="hero-actions">
             <a
-              className="resume-download"
+              className="download-btn"
               href={resume.pdfUrl}
               target="_blank"
               rel="noreferrer"
             >
               Download PDF
             </a>
-            <Link className="resume-back" to="/">
-              ← Back to home
-            </Link>
+            <span className="updated">Last updated: {resume.lastUpdated}</span>
           </div>
         </header>
 
-        <section className="resume-section">
-          <h2>Profile</h2>
-          <ul>
+        <Section title="Profile">
+          <ul className="profile-list">
             {resume.profile.map((p, i) => (
               <li key={i}>{p}</li>
             ))}
           </ul>
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Experience</h2>
+        <Section title="Experience">
           {resume.experience.map((item, i) => (
             <Entry key={i} item={item} />
           ))}
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Research</h2>
+        <Section title="Research">
           {resume.research.map((item, i) => (
             <Entry key={i} item={item} />
           ))}
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Education</h2>
+        <Section title="Education">
           {resume.education.map((edu, i) => (
-            <div className="resume-entry" key={i}>
-              <div className="resume-entry-head">
-                <span className="resume-entry-title">{edu.school}</span>
-                <span className="resume-entry-date">{edu.date}</span>
-              </div>
-              <div className="resume-entry-meta">
-                {edu.degree}
-                {edu.detail ? ` · ${edu.detail}` : ""}
-                {edu.location ? ` · ${edu.location}` : ""}
+            <div className="entry" key={i}>
+              <div className="entry-head">
+                <div className="entry-titles">
+                  <span className="entry-company">{edu.school}</span>
+                  <span className="entry-role">
+                    {edu.degree}
+                    {edu.detail ? ` · ${edu.detail}` : ""}
+                    {edu.location ? ` · ${edu.location}` : ""}
+                  </span>
+                </div>
+                <span className="badge">{edu.date}</span>
               </div>
               {edu.bullets && (
-                <ul>
+                <ul className="bullets">
                   {edu.bullets.map((b, j) => (
                     <li key={j}>{b}</li>
                   ))}
@@ -107,49 +113,56 @@ function ResumePage() {
               )}
             </div>
           ))}
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Technical Skills</h2>
-          <ul className="resume-skills">
+        <Section title="Technical Skills">
+          <div className="skill-groups">
             {Object.entries(resume.skills).map(([category, items]) => (
-              <li key={category}>
-                <span className="resume-skill-cat">{category}:</span>{" "}
-                {items.join(", ")}
-              </li>
+              <div className="skill-group" key={category}>
+                <span className="skill-cat">{category}</span>
+                <div className="chips">
+                  {items.map((s) => (
+                    <span className="chip" key={s}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
-          </ul>
-        </section>
+          </div>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Leadership & Community</h2>
+        <Section title="Leadership & Community">
           {resume.leadership.map((item, i) => (
             <Entry key={i} item={item} />
           ))}
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Awards & Scholarships</h2>
-          <ul>
+        <Section title="Awards & Scholarships">
+          <ul className="plain-list">
             {resume.awards.map((a, i) => (
               <li key={i}>{a}</li>
             ))}
           </ul>
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Certifications & Learning</h2>
-          <ul>
+        <Section title="Certifications & Learning">
+          <ul className="plain-list">
             {resume.certifications.map((c, i) => (
               <li key={i}>{c}</li>
             ))}
           </ul>
-        </section>
+        </Section>
 
-        <section className="resume-section">
-          <h2>Languages</h2>
-          <p>{resume.languages.join("; ")}</p>
-        </section>
+        <Section title="Languages">
+          <div className="chips">
+            {resume.languages.map((l) => (
+              <span className="chip" key={l}>
+                {l}
+              </span>
+            ))}
+          </div>
+        </Section>
       </main>
     </div>
   );
