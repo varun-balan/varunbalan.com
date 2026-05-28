@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
-// import selfPhoto from "../images/selfPhoto.jpg";
 
 function Header() {
   return (
     <div id="Header">
-      <h1 id="MidNameDisplay">Varun Balan</h1>
+      <Link id="MidNameDisplay" to="/">Varun Balan</Link>
       {/* <div className='Header-Right'>
             <button>Resume</button>
             <button>Projects</button>

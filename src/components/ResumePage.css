@@ -1,0 +1,124 @@
+.resume-container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+/* Top block: name, contact line, last-updated, actions */
+.resume-top h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.resume-subline {
+  color: #444;
+}
+
+.resume-subline a {
+  color: #3e8ae2;
+  text-decoration: none;
+}
+
+.resume-subline a:hover {
+  text-decoration: underline;
+}
+
+.resume-updated {
+  color: #777;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.resume-download {
+  display: inline-block;
+  background: #3e8ae2;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.resume-download:hover {
+  background: #2f6fbb;
+}
+
+.resume-back {
+  color: #3e8ae2;
+  text-decoration: none;
+}
+
+.resume-back:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+.resume-section {
+  margin-top: 2rem;
+}
+
+.resume-section h2 {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #3e8ae2;
+  border-bottom: 2px solid #e6e6e6;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.resume-section ul {
+  padding-left: 1.25rem;
+}
+
+.resume-section li {
+  margin-bottom: 0.4rem;
+}
+
+/* Entries (experience / research / leadership / education) */
+.resume-entry {
+  margin-bottom: 1.5rem;
+}
+
+.resume-entry-head {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.resume-entry-title {
+  font-weight: bold;
+}
+
+.resume-entry-date {
+  color: #777;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.resume-entry-meta {
+  color: #555;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.resume-entry-summary {
+  margin-bottom: 0.4rem;
+}
+
+.resume-skills .resume-skill-cat {
+  font-weight: bold;
+}
