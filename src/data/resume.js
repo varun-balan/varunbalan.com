@@ -103,6 +103,12 @@ const resume = {
 
   education: [
     {
+      school: "Georgetown University",
+      location: "Washington, DC",
+      date: "Expected May 2029",
+      degree: "Master of Business Administration (MBA), Part-Time",
+    },
+    {
       school: "University of Wisconsin–Madison",
       location: "Madison, WI",
       date: "May 2024",
