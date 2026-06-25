@@ -5,11 +5,11 @@ import selfImage from "../images/selfPhoto3.jpg";
 function Details() {
   return (
     <div id="MainDetails">
+      <h1 className="visually-hidden">Varun Balan — Software Engineer</h1>
+
       <div id="LeftHalfLanding">
         <img src={selfImage} alt="Varun Balan" id="PersonalPhoto"/>
       </div>
-
-      {/* <div class="verticalLine"></div> */}
 
       <div id="LinkButtonsDiv">
         <a
@@ -27,14 +27,6 @@ function Details() {
           rel="noreferrer"
         >
           LinkedIn
-        </a>
-        <a
-          className="ResumeAnchor"
-          href="https://varun-balan-resume-personal-website.s3.amazonaws.com/Varun-Balan-Resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Resume
         </a>
       </div>
     </div>

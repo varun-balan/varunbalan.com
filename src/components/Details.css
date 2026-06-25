@@ -24,13 +24,12 @@
   margin-top: 0.5em;
 }
 
-a {
+#LinkButtonsDiv a {
   display: block;
   width: 115px;
   height: 25px;
   margin: 5%;
   padding: 10px;
-  background: #4E9CAF;
   text-align: center;
   border-radius: 5px;
   color: white;
@@ -53,12 +52,6 @@ a {
   text-align: center;
 }
 
-.ResumeAnchor {
-  background-color: green;
-  color: white;
-  font-style: normal;
-}
-
 .GitHubAnchor {
   background-color: black;
   color: white;
@@ -69,9 +62,4 @@ a {
   background-color: #0077b5;
   color: white;
   font-style: normal;
-}
-
-.verticalLine {
-  border-left: 2px solid skyblue;
-  height: 20em;
 }
