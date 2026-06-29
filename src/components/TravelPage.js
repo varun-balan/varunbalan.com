@@ -16,24 +16,29 @@ import "./TravelPage.css";
 const allCounties = feature(topo, topo.objects.counties).features;
 const allStates = feature(topo, topo.objects.states).features;
 
-// The 48 contiguous-US state FIPS codes (excludes AK 02, HI 15, DC 11, and
-// any territories). Used to filter the topojson down to exactly "mainland 48".
+// The 48 contiguous-US state FIPS codes (excludes AK 02, HI 15, and all
+// territories). DC (11) is included separately for county-level rendering
+// since it's part of mainland and may be visited — but it is NOT a state, so
+// it's excluded from the "states represented" denominator.
 const CONTIGUOUS_STATE_FIPS = new Set([
   "01","04","05","06","08","09","10","12","13","16","17","18","19","20","21",
   "22","23","24","25","26","27","28","29","30","31","32","33","34","35","36",
   "37","38","39","40","41","42","44","45","46","47","48","49","50","51","53",
   "54","55","56",
 ]);
+// For rendering: 48 states + DC (so DC's one county-equivalent appears).
+const RENDER_FIPS = new Set([...CONTIGUOUS_STATE_FIPS, "11"]);
 
 const counties = allCounties.filter((c) =>
-  CONTIGUOUS_STATE_FIPS.has(String(c.id).slice(0, 2))
+  RENDER_FIPS.has(String(c.id).slice(0, 2))
 );
 const states = allStates.filter((s) =>
   CONTIGUOUS_STATE_FIPS.has(String(s.id))
 );
-const stateNameByFips = Object.fromEntries(
-  states.map((s) => [String(s.id), s.properties.name])
-);
+const stateNameByFips = {
+  ...Object.fromEntries(allStates.map((s) => [String(s.id), s.properties.name])),
+  "11": "District of Columbia",
+};
 
 const TOTAL_COUNTIES_48 = counties.length;
 const TOTAL_STATES_48 = states.length;
@@ -47,10 +52,15 @@ function TravelPage() {
   const visitedSet = useMemo(() => new Set(travel.visited), []);
 
   const visitedCount = visitedSet.size;
-  const statesRepresented = useMemo(
-    () => new Set([...visitedSet].map((fips) => String(fips).slice(0, 2))).size,
-    [visitedSet]
-  );
+  // "States represented" excludes DC (FIPS 11) since DC is not a state.
+  const statesRepresented = useMemo(() => {
+    const stateFipsSet = new Set();
+    for (const fips of visitedSet) {
+      const sf = String(fips).slice(0, 2);
+      if (sf !== "11") stateFipsSet.add(sf);
+    }
+    return stateFipsSet.size;
+  }, [visitedSet]);
 
   function zoomIn() {
     setPosition((p) => ({ ...p, zoom: Math.min(p.zoom * 1.6, 12) }));
