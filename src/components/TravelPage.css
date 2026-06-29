@@ -1,0 +1,138 @@
+.travel {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #232323;
+  line-height: 1.5;
+}
+
+.travel-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.travel-stats {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.travel-stats strong {
+  color: #3e8ae2;
+}
+
+.travel-hint {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Layout: map on the left, info card on the right (desktop).
+   On narrow screens they stack. */
+.travel-layout {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  align-items: flex-start;
+}
+
+.map-wrapper {
+  flex: 1;
+  position: relative;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 0.5rem;
+  border: 1px solid #ececec;
+  overflow: hidden;
+}
+
+.map-controls {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 2;
+}
+
+.map-controls button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.map-controls button:hover {
+  background: #f0f4fa;
+  border-color: #3e8ae2;
+  color: #3e8ae2;
+}
+
+.map-controls button:last-child {
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: auto;
+  padding: 0 0.55rem;
+}
+
+/* Info card */
+.info-card {
+  flex: 0 0 220px;
+  padding: 1rem;
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  min-height: 120px;
+}
+
+.info-prompt {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.info-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.info-state {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.info-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.info-status.visited {
+  background: #e3eefc;
+  color: #2f5680;
+}
+
+.info-status.unvisited {
+  background: #f0f0f0;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .travel-layout {
+    flex-direction: column;
+  }
+
+  .info-card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
