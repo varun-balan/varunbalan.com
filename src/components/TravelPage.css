@@ -136,3 +136,57 @@
     width: 100%;
   }
 }
+
+/* ---- Inventory list ---- */
+.travel-list {
+  margin-top: 3rem;
+}
+
+.travel-list h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3e8ae2;
+  margin-bottom: 0.4rem;
+}
+
+/* Multi-column text flow: groups break naturally across columns on desktop,
+   and `break-inside: avoid` keeps each state group intact. */
+.travel-list-columns {
+  columns: 2;
+  column-gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.travel-state {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.travel-state h3 {
+  font-size: 1.05rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  color: #232323;
+}
+
+.travel-state ul {
+  padding-left: 1.15rem;
+  margin: 0;
+  list-style: disc;
+}
+
+.travel-state li {
+  margin-bottom: 0.35rem;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+.travel-state li strong {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .travel-list-columns {
+    columns: 1;
+  }
+}

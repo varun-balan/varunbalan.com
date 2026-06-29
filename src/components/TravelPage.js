@@ -49,7 +49,11 @@ function TravelPage() {
   const [position, setPosition] = useState(INITIAL_VIEW);
   const [hovered, setHovered] = useState(null);
 
-  const visitedSet = useMemo(() => new Set(travel.visited), []);
+  // Derive the FIPS-only set used for the choropleth highlighting.
+  const visitedSet = useMemo(
+    () => new Set(travel.visited.map((v) => v.fips)),
+    []
+  );
 
   const visitedCount = visitedSet.size;
   // "States represented" excludes DC (FIPS 11) since DC is not a state.
@@ -61,6 +65,25 @@ function TravelPage() {
     }
     return stateFipsSet.size;
   }, [visitedSet]);
+
+  // Group entries by state, with states sorted alphabetically and entries
+  // within each state sorted by label. Used by the inventory list below the map.
+  const groupedByState = useMemo(() => {
+    const map = new Map();
+    for (const entry of travel.visited) {
+      if (!map.has(entry.state)) map.set(entry.state, []);
+      map.get(entry.state).push(entry);
+    }
+    return [...map.keys()]
+      .sort((a, b) => a.localeCompare(b))
+      .map((state) => ({
+        state,
+        entries: map
+          .get(state)
+          .slice()
+          .sort((a, b) => a.label.localeCompare(b.label)),
+      }));
+  }, []);
 
   function zoomIn() {
     setPosition((p) => ({ ...p, zoom: Math.min(p.zoom * 1.6, 12) }));
@@ -194,6 +217,25 @@ function TravelPage() {
             )}
           </aside>
         </div>
+
+        <section className="travel-list">
+          <h2>Where I've Been</h2>
+          <div className="travel-list-columns">
+            {groupedByState.map(({ state, entries }) => (
+              <div className="travel-state" key={state}>
+                <h3>{state}</h3>
+                <ul>
+                  {entries.map((e) => (
+                    <li key={e.fips}>
+                      <strong>{e.label}</strong>
+                      {e.places.length > 0 && <> — {e.places.join(", ")}</>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
