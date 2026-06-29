@@ -58,11 +58,18 @@ function ResumePage() {
             </a>
           </p>
           <div className="hero-actions">
+            {/*
+              Intentional: S3 bucket policy gates by aws:Referer matching
+              varunbalan.com, so rel="noreferrer" (which strips the Referer
+              header) would cause Access Denied. rel="noopener" keeps the
+              tab-nabbing protection without stripping Referer.
+            */}
+            {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a
               className="download-btn"
               href={resume.pdfUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener"
             >
               Download PDF
             </a>
