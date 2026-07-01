@@ -1,4 +1,4 @@
-.travel {
+.counties-page {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
@@ -7,29 +7,33 @@
   line-height: 1.5;
 }
 
-.travel-hero h1 {
+.counties-hero h1 {
   font-size: 2rem;
   margin-bottom: 0.4rem;
 }
 
-.travel-stats {
+.counties-stats {
   font-size: 1.05rem;
   color: #444;
 }
 
-.travel-stats strong {
+.counties-stats strong {
   color: #3e8ae2;
 }
 
-.travel-hint {
+.counties-hint {
   margin-top: 0.4rem;
   font-size: 0.85rem;
   color: #888;
 }
 
-/* Layout: map on the left, info card on the right (desktop).
-   On narrow screens they stack. */
-.travel-layout {
+.counties-updated {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.counties-layout {
   display: flex;
   gap: 1.25rem;
   margin-top: 1.5rem;
@@ -82,7 +86,6 @@
   padding: 0 0.55rem;
 }
 
-/* Info card */
 .info-card {
   flex: 0 0 220px;
   padding: 1rem;
@@ -127,7 +130,7 @@
 }
 
 @media (max-width: 768px) {
-  .travel-layout {
+  .counties-layout {
     flex-direction: column;
   }
 
@@ -138,55 +141,53 @@
 }
 
 /* ---- Inventory list ---- */
-.travel-list {
+.counties-list {
   margin-top: 3rem;
 }
 
-.travel-list h2 {
+.counties-list h2 {
   font-size: 1.4rem;
   font-weight: bold;
   color: #3e8ae2;
   margin-bottom: 0.4rem;
 }
 
-/* Multi-column text flow: groups break naturally across columns on desktop,
-   and `break-inside: avoid` keeps each state group intact. */
-.travel-list-columns {
+.counties-list-columns {
   columns: 2;
   column-gap: 2.5rem;
   margin-top: 1rem;
 }
 
-.travel-state {
+.counties-state {
   break-inside: avoid;
   margin-bottom: 1.5rem;
 }
 
-.travel-state h3 {
+.counties-state h3 {
   font-size: 1.05rem;
   font-weight: bold;
   margin-bottom: 0.4rem;
   color: #232323;
 }
 
-.travel-state ul {
+.counties-state ul {
   padding-left: 1.15rem;
   margin: 0;
   list-style: disc;
 }
 
-.travel-state li {
+.counties-state li {
   margin-bottom: 0.35rem;
   line-height: 1.45;
   font-size: 0.95rem;
 }
 
-.travel-state li strong {
+.counties-state li strong {
   font-weight: 600;
 }
 
 @media (max-width: 768px) {
-  .travel-list-columns {
+  .counties-list-columns {
     columns: 1;
   }
 }

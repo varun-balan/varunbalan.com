@@ -1,6 +1,6 @@
 // Counties visited, as rich entries with state, label, places, and FIPS code.
 // The map derives the visited-FIPS set from this list; the inventory list
-// below the map renders state → county/city → places from the same source.
+// renders state → county/city → places from the same source.
 //
 // Disambiguation notes (for entries where the same name exists as both a
 // county and an independent city in the topojson):
@@ -10,14 +10,19 @@
 //   - VA: Roanoke County (51161), Washington County (51191), Fairfax County
 //     (51059) explicitly the counties, not the same-named cities.
 //   - VA independent cities listed as "(City)": Covington (51580),
-//     Falls Church (51610), Manassas (51683), Virginia Beach (51810).
+//     Falls Church (51610), Manassas (51683), Virginia Beach (51810),
+//     Williamsburg (51830).
 //   - DC: 11001 included; rendered on the map, counted in the county total,
 //     but excluded from the "states represented" stat (DC isn't a state).
+//
+// Rule for whether a county counts: user stayed there or did an activity
+// (not just drove through).
 //
 // To add an entry: drop a new object into the list. Order in this file does
 // not matter — sorting happens at render time.
 
-const travel = {
+const counties = {
+  lastUpdated: "May 2026",
   visited: [
     // Arizona
     { fips: "04005", state: "Arizona", label: "Coconino County", places: ["Grand Canyon Village", "Page", "Williams"] },
@@ -27,10 +32,21 @@ const travel = {
     { fips: "06037", state: "California", label: "Los Angeles County", places: ["Los Angeles", "Santa Monica"] },
     { fips: "06039", state: "California", label: "Madera County", places: ["Oakhurst", "Yosemite National Park"] },
     { fips: "06043", state: "California", label: "Mariposa County", places: ["Yosemite National Park", "Yosemite Valley"] },
+    { fips: "06053", state: "California", label: "Monterey County", places: ["Bixby Bridge", "Carmel-by-the-Sea", "Monterey"] },
     { fips: "06065", state: "California", label: "Riverside County", places: ["Joshua Tree National Park"] },
+    { fips: "06069", state: "California", label: "San Benito County", places: ["Pinnacles National Park"] },
     { fips: "06071", state: "California", label: "San Bernardino County", places: ["Joshua Tree", "Rancho Cucamonga", "San Bernardino"] },
     { fips: "06073", state: "California", label: "San Diego County", places: ["San Diego"] },
+    { fips: "06081", state: "California", label: "San Mateo County", places: ["Foster City", "Redwood City", "San Mateo", "South San Francisco"] },
+    { fips: "06083", state: "California", label: "Santa Barbara County", places: ["Channel Islands National Park", "Santa Cruz Island"] },
+    { fips: "06085", state: "California", label: "Santa Clara County", places: ["Mountain View"] },
+    { fips: "06087", state: "California", label: "Santa Cruz County", places: ["Santa Cruz"] },
     { fips: "06107", state: "California", label: "Tulare County", places: ["Sequoia National Park"] },
+    { fips: "06111", state: "California", label: "Ventura County", places: ["Ventura"] },
+
+    // Colorado
+    { fips: "08031", state: "Colorado", label: "Denver County", places: ["Denver International Airport"] },
+    { fips: "08041", state: "Colorado", label: "El Paso County", places: ["Colorado Springs", "Garden of the Gods"] },
 
     // Connecticut
     { fips: "09009", state: "Connecticut", label: "New Haven County", places: ["Hammonasset Beach State Park", "New Haven"] },
@@ -115,6 +131,7 @@ const travel = {
     { fips: "36001", state: "New York", label: "Albany County", places: ["Albany"] },
     { fips: "36039", state: "New York", label: "Greene County", places: ["Kaaterskill Falls"] },
     { fips: "36047", state: "New York", label: "Kings County", places: ["Brooklyn"] },
+    { fips: "36059", state: "New York", label: "Nassau County", places: ["Long Beach"] },
     { fips: "36061", state: "New York", label: "New York County", places: ["Manhattan"] },
     { fips: "36081", state: "New York", label: "Queens County", places: ["Queens"] },
     { fips: "36085", state: "New York", label: "Richmond County", places: ["Staten Island"] },
@@ -175,6 +192,7 @@ const travel = {
     { fips: "51075", state: "Virginia", label: "Goochland County", places: ["Capital One Office"] },
     { fips: "51079", state: "Virginia", label: "Greene County", places: ["Shenandoah"] },
     { fips: "51087", state: "Virginia", label: "Henrico County", places: ["Short Pump"] },
+    { fips: "51095", state: "Virginia", label: "James City County", places: ["Busch Gardens Williamsburg"] },
     { fips: "51107", state: "Virginia", label: "Loudoun County", places: ["Ashburn", "Leesburg", "Sterling"] },
     { fips: "51113", state: "Virginia", label: "Madison County", places: ["Shenandoah"] },
     { fips: "51683", state: "Virginia", label: "Manassas (City)", places: [] },
@@ -189,7 +207,9 @@ const travel = {
     { fips: "51810", state: "Virginia", label: "Virginia Beach (City)", places: [] },
     { fips: "51187", state: "Virginia", label: "Warren County", places: ["Front Royal", "Shenandoah"] },
     { fips: "51191", state: "Virginia", label: "Washington County", places: ["Abingdon"] },
+    { fips: "51830", state: "Virginia", label: "Williamsburg (City)", places: ["Williamsburg"] },
     { fips: "51197", state: "Virginia", label: "Wythe County", places: ["Wytheville"] },
+    { fips: "51199", state: "Virginia", label: "York County", places: ["Water Country USA"] },
 
     // Washington
     { fips: "53015", state: "Washington", label: "Cowlitz County", places: ["Castle Rock"] },
@@ -219,4 +239,4 @@ const travel = {
   ],
 };
 
-export default travel;
+export default counties;
