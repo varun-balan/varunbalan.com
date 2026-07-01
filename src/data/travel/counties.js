@@ -179,6 +179,9 @@ const counties = {
     { fips: "48453", state: "Texas", label: "Travis County", places: ["Austin"] },
     { fips: "48491", state: "Texas", label: "Williamson County", places: ["Round Rock"] },
 
+    // Vermont
+    { fips: "50027", state: "Vermont", label: "Windsor County", places: ["Brownsville", "Ludlow", "Mount Ascutney", "Okemo Mountain Resort"] },
+
     // Virginia
     { fips: "51003", state: "Virginia", label: "Albemarle County", places: ["Shenandoah"] },
     { fips: "51013", state: "Virginia", label: "Arlington County", places: ["Arlington"] },
