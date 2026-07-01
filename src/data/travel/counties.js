@@ -22,7 +22,7 @@
 // not matter — sorting happens at render time.
 
 const counties = {
-  lastUpdated: "May 2026",
+  lastUpdated: "July 2026",
   visited: [
     // Arizona
     { fips: "04005", state: "Arizona", label: "Coconino County", places: ["Grand Canyon Village", "Page", "Williams"] },
@@ -184,6 +184,7 @@ const counties = {
 
     // Virginia
     { fips: "51003", state: "Virginia", label: "Albemarle County", places: ["Shenandoah"] },
+    { fips: "51510", state: "Virginia", label: "Alexandria (City)", places: ["Old Town Alexandria"] },
     { fips: "51013", state: "Virginia", label: "Arlington County", places: ["Arlington"] },
     { fips: "51015", state: "Virginia", label: "Augusta County", places: ["Shenandoah"] },
     { fips: "51017", state: "Virginia", label: "Bath County", places: ["Douthat State Park", "Hot Springs", "Warm Springs"] },
@@ -191,8 +192,9 @@ const counties = {
     { fips: "51580", state: "Virginia", label: "Covington (City)", places: [] },
     { fips: "51047", state: "Virginia", label: "Culpeper County", places: ["Culpeper"] },
     { fips: "51059", state: "Virginia", label: "Fairfax County", places: ["Annandale", "Chantilly", "Herndon", "Lincolnia", "Mason Neck", "McLean", "Reston", "Tysons"] },
+    { fips: "51600", state: "Virginia", label: "Fairfax (City)", places: [] },
     { fips: "51610", state: "Virginia", label: "Falls Church (City)", places: [] },
-    { fips: "51075", state: "Virginia", label: "Goochland County", places: ["Capital One Office"] },
+    { fips: "51075", state: "Virginia", label: "Goochland County", places: [] },
     { fips: "51079", state: "Virginia", label: "Greene County", places: ["Shenandoah"] },
     { fips: "51087", state: "Virginia", label: "Henrico County", places: ["Short Pump"] },
     { fips: "51095", state: "Virginia", label: "James City County", places: ["Busch Gardens Williamsburg"] },

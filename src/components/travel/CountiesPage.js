@@ -82,10 +82,10 @@ function CountiesPage() {
   }, []);
 
   function zoomIn() {
-    setPosition((p) => ({ ...p, zoom: Math.min(p.zoom * 1.6, 12) }));
+    setPosition((p) => ({ ...p, zoom: Math.min(p.zoom * 2, 32) }));
   }
   function zoomOut() {
-    setPosition((p) => ({ ...p, zoom: Math.max(p.zoom / 1.6, 1) }));
+    setPosition((p) => ({ ...p, zoom: Math.max(p.zoom / 2, 1) }));
   }
   function resetView() {
     setPosition(INITIAL_VIEW);
@@ -94,7 +94,7 @@ function CountiesPage() {
   return (
     <main className="counties-page">
       <header className="counties-hero">
-        <h1>Counties Visited</h1>
+        <h1>US Counties Visited</h1>
         <p className="counties-stats">
           <strong>{visitedCount}</strong> of {TOTAL_COUNTIES_48} counties
           {" · "}
@@ -126,7 +126,7 @@ function CountiesPage() {
               zoom={position.zoom}
               onMoveEnd={setPosition}
               minZoom={1}
-              maxZoom={12}
+              maxZoom={32}
             >
               {/* Counties — filled per visited status, interactive on hover. */}
               <Geographies geography={{ type: "FeatureCollection", features: mapCounties }}>

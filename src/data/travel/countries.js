@@ -15,7 +15,7 @@
 // doesn't need to.
 
 const countries = {
-  lastUpdated: "May 2026",
+  lastUpdated: "July 2026",
   visited: [
     // --- Asia ---
     {
@@ -102,6 +102,11 @@ const countries = {
       country: "Denmark",
       continent: "Europe",
       places: ["Copenhagen", "Sommer's Automobile Museum (Nærum)"],
+    },
+    {
+      country: "Germany",
+      continent: "Europe",
+      places: ["Cologne"],
     },
     {
       country: "Italy",
