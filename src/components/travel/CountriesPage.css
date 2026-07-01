@@ -1,0 +1,93 @@
+.countries-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #232323;
+  line-height: 1.55;
+}
+
+.countries-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.countries-stats {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.countries-stats strong {
+  color: #3e8ae2;
+}
+
+.countries-updated {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.countries-continent {
+  margin-top: 2.5rem;
+}
+
+.countries-continent h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #3e8ae2;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 0.4rem;
+}
+
+.countries-list {
+  columns: 2;
+  column-gap: 2.5rem;
+}
+
+.country {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.country h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #232323;
+}
+
+.country-note {
+  color: #888;
+  font-weight: normal;
+  font-size: 0.9rem;
+}
+
+.country-places {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.country-regions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.country-region {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.45;
+}
+
+.country-region-name {
+  font-weight: bold;
+  color: #232323;
+}
+
+@media (max-width: 768px) {
+  .countries-list {
+    columns: 1;
+  }
+}

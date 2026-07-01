@@ -1,0 +1,71 @@
+.parks-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #232323;
+  line-height: 1.55;
+}
+
+.parks-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.parks-stats {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.parks-stats strong {
+  color: #3e8ae2;
+}
+
+.parks-scope-note {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  font-style: italic;
+}
+
+.parks-updated {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.parks-list {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2.5rem;
+}
+
+.park {
+  padding: 0.8rem 1rem;
+  border-left: 3px solid #3e8ae2;
+  background: #fafafa;
+  border-radius: 4px;
+}
+
+.park-name {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #232323;
+}
+
+.park-meta {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.park-counties {
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .parks-list {
+    grid-template-columns: 1fr;
+  }
+}
