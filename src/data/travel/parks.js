@@ -10,6 +10,7 @@ const parks = {
   totalUSNationalParks: 63,
   visited: [
     { name: "Channel Islands", states: ["California"], counties: ["Santa Barbara"] },
+    { name: "Gateway Arch", states: ["Missouri"], counties: ["St. Louis (City)"] },
     { name: "Grand Canyon", states: ["Arizona"], counties: ["Coconino"] },
     { name: "Great Smoky Mountains", states: ["North Carolina", "Tennessee"], counties: ["Swain", "Blount", "Sevier"] },
     { name: "Indiana Dunes", states: ["Indiana"], counties: ["Porter"] },
