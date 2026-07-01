@@ -16,6 +16,9 @@ function Header() {
         <NavLink to="/resume" className="nav-link">
           Resume
         </NavLink>
+        <NavLink to="/travel" className="nav-link">
+          Travel
+        </NavLink>
       </div>
     </nav>
   );
