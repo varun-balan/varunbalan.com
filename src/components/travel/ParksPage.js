@@ -40,7 +40,13 @@ function ParksPage() {
                   {" · "}
                   <span className="park-counties">
                     {p.counties.join(", ")}
-                    {p.counties.length === 1 ? " County" : " Counties"}
+                    {/* Don't append "County/Counties" if any entry is an
+                        independent city (marked with "(City)" parenthetical). */}
+                    {p.counties.some((c) => c.includes("("))
+                      ? ""
+                      : p.counties.length === 1
+                      ? " County"
+                      : " Counties"}
                   </span>
                 </>
               )}
