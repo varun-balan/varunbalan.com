@@ -94,7 +94,7 @@ function CountiesPage() {
   return (
     <main className="counties-page">
       <header className="counties-hero">
-        <h1>Counties Visited</h1>
+        <h1>US Counties Visited</h1>
         <p className="counties-stats">
           <strong>{visitedCount}</strong> of {TOTAL_COUNTIES_48} counties
           {" · "}

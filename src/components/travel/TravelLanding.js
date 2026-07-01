@@ -19,7 +19,7 @@ const parkCount = parks.visited.length;
 const cards = [
   {
     to: "/travel/counties",
-    title: "Counties",
+    title: "US Counties",
     stat: `${countyCount} counties · ${stateCount} of 48 mainland states + DC`,
     blurb:
       "Interactive US county map with an alphabetical list of every county visited and the specific places within each.",
