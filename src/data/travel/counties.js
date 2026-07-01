@@ -111,7 +111,7 @@ const counties = {
     { fips: "27109", state: "Minnesota", label: "Olmsted County", places: ["Rochester"] },
 
     // Missouri
-    { fips: "29510", state: "Missouri", label: "St. Louis (City)", places: [] },
+    { fips: "29510", state: "Missouri", label: "St. Louis (City)", places: ["Gateway Arch National Park"] },
 
     // Nevada
     { fips: "32003", state: "Nevada", label: "Clark County", places: ["Hoover Dam", "Las Vegas"] },
