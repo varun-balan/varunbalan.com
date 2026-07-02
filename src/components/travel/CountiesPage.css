@@ -152,6 +152,12 @@
   margin-bottom: 0.4rem;
 }
 
+.counties-list-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
 .counties-list-columns {
   columns: 2;
   column-gap: 2.5rem;
@@ -184,6 +190,25 @@
 
 .counties-state li strong {
   font-weight: 600;
+}
+
+/* Clickable list items — click to jump the map to that county. */
+.counties-list-item {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0.05rem 0.25rem;
+  margin-left: -0.25rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.counties-list-item:hover {
+  background-color: #eef3fb;
+  color: #2f5680;
+}
+
+.counties-list-item:focus-visible {
+  outline: 2px solid #3e8ae2;
+  outline-offset: 1px;
 }
 
 @media (max-width: 768px) {

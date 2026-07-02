@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -6,6 +6,7 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 import { feature } from "topojson-client";
+import { geoCentroid } from "d3-geo";
 import topo from "us-atlas/counties-10m.json";
 import counties from "../../data/travel/counties";
 import "./CountiesPage.css";
@@ -41,9 +42,36 @@ const TOTAL_COUNTIES_48 = mapCounties.length;
 const TOTAL_STATES_48 = mapStates.length;
 const INITIAL_VIEW = { coordinates: [-96, 38], zoom: 1 };
 
+// Precompute each county's centroid so list-click can pan the map to it.
+// geoCentroid returns [lon, lat] on the source GeoJSON, which matches what
+// ZoomableGroup's `center` prop expects for geoAlbersUsa.
+const centroidByFips = new Map();
+for (const c of mapCounties) {
+  centroidByFips.set(String(c.id), geoCentroid(c));
+}
+
+// Zoom level used when a list item is clicked. High enough that most counties
+// (and any independent-city holes inside them) become comfortably clickable.
+const LIST_CLICK_ZOOM = 24;
+
 function CountiesPage() {
   const [position, setPosition] = useState(INITIAL_VIEW);
   const [hovered, setHovered] = useState(null);
+  const mapRef = useRef(null);
+
+  // Jump the map to a given county's centroid at LIST_CLICK_ZOOM and scroll
+  // the map back into view (the list sits far below the map).
+  function jumpToCounty(entry) {
+    const centroid = centroidByFips.get(String(entry.fips));
+    if (!centroid) return;
+    setPosition({ coordinates: centroid, zoom: LIST_CLICK_ZOOM });
+    setHovered({
+      name: entry.label,
+      state: entry.state,
+      visited: true,
+    });
+    mapRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   // Derive the FIPS-only set used for the choropleth highlighting.
   const visitedSet = useMemo(
@@ -108,7 +136,7 @@ function CountiesPage() {
         <p className="counties-updated">Last updated: {counties.lastUpdated}</p>
       </header>
 
-      <div className="counties-layout">
+      <div className="counties-layout" ref={mapRef}>
         <div className="map-wrapper">
           <div className="map-controls">
             <button onClick={zoomIn} aria-label="Zoom in">+</button>
@@ -215,13 +243,28 @@ function CountiesPage() {
 
       <section className="counties-list">
         <h2>Where I've Been</h2>
+        <p className="counties-list-hint">
+          Click any county to jump the map to it.
+        </p>
         <div className="counties-list-columns">
           {groupedByState.map(({ state, entries }) => (
             <div className="counties-state" key={state}>
               <h3>{state}</h3>
               <ul>
                 {entries.map((e) => (
-                  <li key={e.fips}>
+                  <li
+                    key={e.fips}
+                    className="counties-list-item"
+                    onClick={() => jumpToCounty(e)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(ev) => {
+                      if (ev.key === "Enter" || ev.key === " ") {
+                        ev.preventDefault();
+                        jumpToCounty(e);
+                      }
+                    }}
+                  >
                     <strong>{e.label}</strong>
                     {e.places.length > 0 && <> — {e.places.join(", ")}</>}
                   </li>
